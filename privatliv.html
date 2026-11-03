@@ -3,18 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Privatlivspolitik · Bødekassen</title>
+    <title>Privatlivspolitik · Klubkassen</title>
     <link rel="icon" href="favicon.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main>
-      <p><a href="./">Bødekassen</a> · <a href="privacy.html" lang="en">English</a></p>
+      <p><a href="./">Klubkassen</a> · <a href="privacy.html" lang="en">English</a></p>
       <h1>Privatlivspolitik</h1>
-      <p class="muted">Gælder appen Bødekassen (The Fines Box). Senest ændret 30. oktober 2026.</p>
+      <p class="muted">Gælder appen Klubkassen (The Fines Box). Senest ændret 3. november 2026.</p>
 
       <h2>Hvem er ansvarlig</h2>
-      <p>Bødekassen er lavet og drives af ShieldCastle Labs v/ Søren Børsting Skjoldborg, Danmark, som er dataansvarlig. Skriv til
+      <p>Klubkassen er lavet og drives af ShieldCastle Labs v/ Søren Børsting Skjoldborg, Danmark, som er dataansvarlig. Skriv til
         <a href="mailto:contact@thefinesbox.com">contact@thefinesbox.com</a> om alt, der handler om
         dine oplysninger.</p>
 
@@ -30,15 +30,21 @@
           holdets bødeansvarlige se, at det var dig.</li>
         <li><strong>Forslag:</strong> forslag til bødebiblioteket og til oversættelser af holdets
           bøder.</li>
+        <li><strong>Notifikationer:</strong> slår du notifikationer til, din telefons
+          push-adresse og de beskeder, appen har sendt dig (fx "Ny bøde"). Logger du ud, glemmer
+          vi telefonens adresse.</li>
+        <li><strong>Fejlrapporter:</strong> går appen ned, en rapport om fejlen: hvilken skærm,
+          telefonmodel og iOS- og appversion. Uden dit navn, din e-mail eller holdets bøder.</li>
       </ul>
       <p>Vi bruger ikke reklamer, sporing eller analyseværktøjer, og vi sælger ikke oplysninger.</p>
 
       <h2>Hvorfor og på hvilket grundlag</h2>
       <p>Vi bruger oplysningerne til at give dig og dit hold appen: logge dig ind, vise holdets
-        bøder, rangliste og medlemmer, og sende dig loginkoder. Grundlaget er, at det er nødvendigt
-        for at levere den tjeneste, du har bedt om (databeskyttelsesforordningens artikel 6, stk. 1,
-        litra b). Tekniske logfiler, fx IP-adresser ved login, bruges til sikkerhed og fejlfinding
-        (artikel 6, stk. 1, litra f, vores legitime interesse i en sikker app).</p>
+        bøder, rangliste og medlemmer, sende dig loginkoder og, hvis du vil, notifikationer.
+        Grundlaget er, at det er nødvendigt for at levere den tjeneste, du har bedt om
+        (databeskyttelsesforordningens artikel 6, stk. 1, litra b). Tekniske logfiler, fx
+        IP-adresser ved login, og fejlrapporter bruges til sikkerhed og fejlfinding (artikel 6,
+        stk. 1, litra f, vores legitime interesse i en sikker app, der virker).</p>
 
       <h2>Hvem kan se dem</h2>
       <p>Det, du gør på et hold, kan de andre på holdet se: dit navn, dine roller og holdets bøder.
@@ -47,9 +53,12 @@
       <ul>
         <li><strong>Supabase</strong> – database, login og billeder. Servere i Irland (EU).</li>
         <li><strong>Resend</strong> – sender loginkoder på e-mail. Sendes fra Irland (EU).</li>
-        <li><strong>Expo</strong> (USA) – leverer opdateringer af appen. Ser din telefons
-          IP-adresse og appens version, når appen tjekker for en opdatering.</li>
-        <li><strong>Apple og Google</strong> – kun hvis du vælger at logge ind med dem.</li>
+        <li><strong>Expo</strong> (USA) – leverer opdateringer af appen og sender notifikationer
+          videre til Apple. Ser din telefons IP-adresse og appens version, når appen tjekker for en
+          opdatering, og en notifikations tekst og push-adresse, når den sendes.</li>
+        <li><strong>Sentry</strong> – fejlrapporter. Servere i Tyskland (EU).</li>
+        <li><strong>Apple og Google</strong> – login, kun hvis du vælger at logge ind med dem.
+          Apple leverer også notifikationerne til din iPhone.</li>
         <li><strong>GitHub</strong> (USA) – viser denne hjemmeside.</li>
       </ul>
       <p>Leverandører i USA bruges efter EU's regler for overførsel af oplysninger
