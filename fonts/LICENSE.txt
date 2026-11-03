@@ -1,0 +1,8 @@
+Plus Jakarta Sans
+Copyright 2020 The Plus Jakarta Sans Project Authors (https://github.com/tokotype/PlusJakartaSans)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+The license is available with a FAQ at: https://openfontlicense.org
+
+The files here are trimmed to the characters thefinesbox.com uses (made by
+website/tools/make-assets.py in the app's repository).
