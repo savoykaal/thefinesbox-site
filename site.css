@@ -80,6 +80,12 @@ p { margin: 0; }
 .deco-cards span { position: absolute; width: 46%; aspect-ratio: 5 / 7; border-radius: 26px; top: 10%; }
 .deco-cards .y { background: var(--yellow); left: 4%; transform: rotate(-12deg); }
 .deco-cards .r { background: var(--red); right: 4%; transform: rotate(12deg); }
+/* A fine icon on each big card, where the phone doesn't cover it: low on the yellow, high on the
+   red. Only on wide screens: below that the cards barely show beside the phone. */
+.deco-cards svg { display: none; position: absolute; width: 28%; height: auto; }
+@media (min-width: 1200px) { .deco-cards svg { display: block; } }
+.deco-cards .y svg { left: 6%; top: 46%; width: 24%; color: #1B1A12; opacity: 0.8; }
+.deco-cards .r svg { right: 9%; top: 7%; color: #FFFFFF; opacity: 0.9; }
 
 .phone {
   --pw: 250px;
@@ -212,7 +218,8 @@ p { margin: 0; }
 .fcard:nth-child(odd) { transform: rotate(-3deg); }
 .fcard:nth-child(even) { transform: rotate(2.5deg); }
 .fcard.red { background: var(--red); color: #FFFFFF; }
-.fcard b { font-size: 17px; line-height: 1.2; font-weight: 800; overflow-wrap: anywhere; hyphens: auto; }
+.fcard svg { flex: none; width: 34px; height: 34px; margin-bottom: 12px; }
+.fcard b { font-size: 17px; line-height: 1.2; font-weight: 800; overflow-wrap: anywhere; hyphens: auto; margin-bottom: auto; padding-bottom: 12px; }
 .fcard span { font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums; opacity: 0.85; }
 
 /* ---------- Leaderboard ---------- */
@@ -241,7 +248,89 @@ p { margin: 0; }
 .kings .k b { font-weight: 800; font-size: 18px; line-height: 1.25; }
 .kings .k .num { font-weight: 800; white-space: nowrap; }
 
-/* ---------- Trust, later, questions ---------- */
+/* ---------- Match day, player of the match, money ---------- */
+.feature-grid { margin-top: 36px; display: grid; gap: 32px; }
+@media (min-width: 900px) {
+  .feature-grid { grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .feature-grid.flip > .panel { order: 2; }
+}
+.feats { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.feats li { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; }
+.feats svg { grid-row: span 2; width: 26px; height: 26px; color: var(--accent); margin-top: 2px; }
+.feats b { font-weight: 800; font-size: 18px; line-height: 1.3; }
+.feats p { font-size: 16px; color: var(--muted); }
+
+.matchcard { width: 100%; max-width: 440px; justify-self: center; }
+.matchcard .when { font-size: 14px; color: var(--muted); }
+.shape { margin: 2px 0 12px; font-size: 14px; font-weight: 700; color: var(--accent); }
+.pitch {
+  position: relative; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden;
+  background: repeating-linear-gradient(180deg, #2E8B57 0 12.5%, #287D4E 12.5% 25%);
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.8);
+}
+/* Half a pitch: the centre circle at the top, the penalty area and the goal area at the bottom. */
+.pitch::before {
+  content: ""; position: absolute; left: 50%; top: 0; width: 34%; aspect-ratio: 1;
+  transform: translate(-50%, -50%); border: 3px solid rgba(255, 255, 255, 0.8); border-radius: 50%;
+}
+.pitch .box, .pitch .spot { position: absolute; bottom: 0; border: 3px solid rgba(255, 255, 255, 0.8); border-bottom: 0; }
+.pitch .box { left: 20%; width: 60%; height: 20%; }
+.pitch .spot { left: 36%; width: 28%; height: 8%; }
+.pl {
+  position: absolute; z-index: 1; transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  font-size: 12px; font-weight: 700; color: #FFFFFF; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+.pl i {
+  font-style: normal; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+  background: #1D4ED8; color: #FFFFFF; font-size: 13px; font-weight: 800; text-shadow: none;
+  box-shadow: 0 0 0 2px #FFFFFF;
+}
+.pl i.gk { background: var(--yellow); color: #1B1A12; }
+.bench { margin-top: 10px; font-size: 14px; color: var(--muted); }
+.avail { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; }
+.avail > p { display: inline-flex; align-items: center; gap: 8px; margin-right: 18px; font-weight: 700; }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot.ok { background: var(--accent); }
+.dot.no { background: var(--red); }
+.avail ul { list-style: none; padding: 0; margin: 8px 0 0; }
+.avail li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid var(--line); }
+.avail li span { color: var(--muted); text-align: right; }
+
+.motm-grid { margin-top: 72px; display: grid; gap: 24px; }
+@media (min-width: 900px) { .motm-grid { grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; } }
+.motm-grid h3 { font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 800; }
+.motm-grid > div > p { margin-top: 12px; color: var(--muted); max-width: 44ch; }
+.motm { width: 100%; max-width: 440px; justify-self: center; }
+.motm ul { list-style: none; padding: 0; margin: 16px 0 10px; display: grid; gap: 8px; }
+.motm li {
+  position: relative; overflow: hidden; display: flex; justify-content: space-between; gap: 12px;
+  padding: 12px 14px; border-radius: 12px; background: var(--bg); font-weight: 700;
+}
+.motm li > span:not(.bar) { position: relative; z-index: 1; }
+.motm .bar { position: absolute; inset: 0 auto 0 0; width: var(--w); background: var(--accent-soft); }
+.motm li.win .bar { background: var(--gold); }
+.motm .who { display: inline-flex; align-items: center; gap: 8px; }
+.motm .who svg { width: 18px; height: 18px; }
+
+.section.money { background: var(--surface); }
+.money .panel { background: var(--bg); }
+.paycard { width: 100%; max-width: 380px; justify-self: center; }
+.paycard .owe { font-size: 14px; font-weight: 700; color: var(--muted); }
+.paycard .amount { margin: 2px 0 2px; font-size: 44px; line-height: 1.1; font-weight: 800; letter-spacing: -0.03em; }
+.paycard .ref {
+  margin-top: 18px; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  background: var(--surface); border-radius: 14px; padding: 12px 14px;
+}
+.paycard .ref small { display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+.paycard .ref b { font-size: 18px; font-weight: 800; letter-spacing: 0.04em; }
+.paycard .copy { font-size: 14px; font-weight: 800; color: var(--accent); padding: 6px 12px; border-radius: 999px; background: var(--accent-soft); }
+.paycard .paybtn { margin-top: 14px; padding: 14px; border-radius: 14px; background: var(--accent); color: var(--accent-ink); text-align: center; font-weight: 800; }
+.paycard .alt { margin-top: 10px; text-align: center; }
+
+.store img { height: 54px; width: auto; }
+
+/* ---------- Trust, questions ---------- */
 .trust-grid { margin-top: 32px; display: grid; gap: 14px; }
 @media (min-width: 700px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1000px) { .trust-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -249,9 +338,6 @@ p { margin: 0; }
 .tile svg { grid-row: span 2; width: 26px; height: 26px; color: var(--accent); margin-top: 2px; }
 .tile b { font-weight: 800; }
 .tile p { font-size: 15px; color: var(--muted); }
-.later-list { margin-top: 28px; display: grid; gap: 10px; list-style: none; padding: 0; }
-.later-list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 16px 0; border-bottom: 1px solid var(--line); font-weight: 700; font-size: 18px; }
-.chip { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 999px; border: 1px dashed var(--muted); color: var(--muted); }
 .faq { margin-top: 28px; display: grid; gap: 10px; max-width: 760px; }
 .faq details { background: var(--surface); border-radius: 16px; padding: 4px 18px; }
 .faq summary { cursor: pointer; font-weight: 800; padding: 14px 0; }
