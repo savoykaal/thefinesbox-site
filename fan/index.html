@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Følg holdet · The Fines Box</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.png" />
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      .code {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        margin: 0.5rem 0 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- The fan QR code and the fan link (round 12) lead here: thefinesbox.com/fan/#CODE.
+         The code after # stays in the browser (it is never sent to any server). The page shows
+         it, so a fan can type it in the app. Published with the website at release. -->
+    <main>
+      <p><a href="/da/">The Fines Box</a> · <a href="#" id="english" lang="en">English</a></p>
+      <h1 id="title">Følg holdet som fan</h1>
+      <p id="intro">Hent The Fines Box, log ind, tryk <strong>Bliv medlem af et hold</strong>, og skriv holdets fankode:</p>
+      <p class="code" id="code">—</p>
+      <p id="what">Som fan følger du holdets kampe, startopstillinger, resultater, mål og kampens
+        spiller. Du kan støtte holdet og betale entré via holdets MobilePay-boks.</p>
+      <p id="store">The Fines Box kommer snart i App Store.</p>
+    </main>
+    <footer>
+      <span id="madeBy">Lavet af</span>
+      <img src="/shieldcastle-labs.svg" alt="ShieldCastle Labs" width="145" height="44" />
+    </footer>
+    <script>
+      // The code from the link, shown as K7MQ-2XPA. Only letters and digits are kept.
+      var raw = (location.hash || "").replace(/[^A-Za-z0-9]/g, "").toUpperCase().slice(0, 8);
+      if (raw.length === 8) document.getElementById("code").textContent = raw.slice(0, 4) + "-" + raw.slice(4);
+
+      // English on request (or when the phone is English).
+      function english() {
+        document.documentElement.lang = "en";
+        document.title = "Follow the team · The Fines Box";
+        document.getElementById("title").textContent = "Follow the team as a fan";
+        document.getElementById("intro").innerHTML =
+          "Get The Fines Box, log in, tap <strong>Join a team</strong>, and type the team's fan code:";
+        document.getElementById("what").textContent =
+          "As a fan you follow the team's matches, line-ups, results, goals and player of the match. You can support the team and pay entrance through the team's MobilePay box.";
+        document.getElementById("store").textContent = "The Fines Box is coming soon to the App Store.";
+        document.getElementById("madeBy").textContent = "Made by";
+        document.getElementById("english").style.display = "none";
+      }
+      document.getElementById("english").addEventListener("click", function (event) {
+        event.preventDefault();
+        english();
+      });
+      if (!/^da\b/i.test(navigator.language || "da")) english();
+    </script>
+  </body>
+</html>
