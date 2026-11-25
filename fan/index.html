@@ -27,7 +27,8 @@
       <p class="code" id="code">—</p>
       <p id="what">Som fan følger du holdets kampe, startopstillinger, resultater, mål og kampens
         spiller. Du kan støtte holdet og betale entré via holdets MobilePay-boks.</p>
-      <p id="store">The Fines Box kommer snart i App Store.</p>
+      <p id="store"><a href="https://apps.apple.com/dk/app/id6829148710"><img id="badge"
+        src="/img/app-store-badge-da.svg" height="54" alt="Hent i App Store" /></a></p>
     </main>
     <footer>
       <span id="madeBy">Lavet af</span>
@@ -47,7 +48,9 @@
           "Get The Fines Box, log in, tap <strong>Join a team</strong>, and type the team's fan code:";
         document.getElementById("what").textContent =
           "As a fan you follow the team's matches, line-ups, results, goals and player of the match. You can support the team and pay entrance through the team's MobilePay box.";
-        document.getElementById("store").textContent = "The Fines Box is coming soon to the App Store.";
+        var badge = document.getElementById("badge");
+        badge.src = "/img/app-store-badge-en.svg";
+        badge.alt = "Download on the App Store";
         document.getElementById("madeBy").textContent = "Made by";
         document.getElementById("english").style.display = "none";
       }
